@@ -1,0 +1,5 @@
+for folder in pHGG_snRNAseq_10x_output/*/; do
+    if [ -d "$folder" ]; then
+        sbatch --mem=75GB --time=2-00:00:00 --ntasks=6 --wrap="velocyto run10x -@ 6 -m GRCh38_rmsk.gtf \"$folder\" gencode.v38.annotation.gtf"
+    fi
+done
